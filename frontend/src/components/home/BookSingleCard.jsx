@@ -5,11 +5,10 @@ import { AiOutlineEdit } from 'react-icons/ai';
 import { BsInfoCircle } from 'react-icons/bs';
 import { MdOutlineDelete } from 'react-icons/md';
 import { useState } from 'react';
-// import {BookModel} from './BookModel';
-import {BookModel} from './BookModel';
+import BookModal from './BookModal';
 
 const BookSingleCard = ({ book }) => {
-    const [showModel, setShowModel] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <div className='border-2 border-gray-500 rounded-lg px-4 py-2 m-4 relative hover:shadow-xl'>
@@ -26,9 +25,9 @@ const BookSingleCard = ({ book }) => {
         <h2 className='my-1'>{book.author}</h2>
       </div>
       <div className='flex justify-between items-center gap-x-2 mt-4 p-4'>
-      <BiShow
+        <BiShow
           className='text-3xl text-blue-800 hover:text-black cursor-pointer'
-          onClick={() => setShowModel(true)}
+          onClick={() => setShowModal(true)}
         />
         <Link to={`/books/details/${book._id}`}>
           <BsInfoCircle className='text-2xl text-green-800 hover:text-black' />
@@ -40,8 +39,8 @@ const BookSingleCard = ({ book }) => {
           <MdOutlineDelete className='text-2xl text-red-600 hover:text-black' />
         </Link>
       </div>
-      {showModel && (
-        <BookModel book={book} onClose={() => setShowModel(false)} />
+      {showModal && (
+        <BookModal book={book} onClose={() => setShowModal(false)} />
       )}
     </div>
   );
